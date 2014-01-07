@@ -1,0 +1,22 @@
+<h1>Listado Posts</h1>
+
+<ul class="row" id="posts">
+  <% @posts.each do |post| %>
+  <article id="post">
+   <div class="col-xs-6 col-md-3">
+     <div class="thumbnail">
+      <% if post.has_photo? %>
+        <%= image_tag post.photo_path %>
+      <% end %>
+      <div class="caption">
+      	<h3><%= link_to post.titulo, post %></h3>
+      </div>
+     </div>
+   </div>
+  </article>
+   <% end %>
+</ul>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>

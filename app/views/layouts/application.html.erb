@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GagCf</title>
+  <%= stylesheet_link_tag    "metro-bootstrap", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default">
+	<ul class="nav navbar-nav">
+		<li><%= link_to 'Inicio', root_path %></li>
+		<li><%= link_to 'Posts', posts_path %></li>
+		<% if current_user %>
+		   <li><%= link_to 'Nuevo Articulo', new_post_path %></li>
+		   <li><%= link_to 'Editar Usuario', edit_usuario_path(current_user) %></li>
+		   <li><%= link_to "Cerrar Sesión #{current_user.username}", logout_path %></li>
+		<% else %>
+		   <li><%= link_to 'Iniciar Sesión', login_path %></li>
+		<% end %>
+	</ul>
+</nav>
+<%= yield %>
+
+</body>
+</html>
